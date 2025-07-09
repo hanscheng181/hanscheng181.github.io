@@ -343,3 +343,162 @@ body {
         margin-bottom: 0.5rem;
     }
 }
+/* ===== 賽博龐克發光邊框＆光影 ===== */
+:root {
+    --neon-pink: #ff36be;
+    --cyber-blue: #3dfcff;
+    --cyber-bg: linear-gradient(135deg, #22002c 0%, #340054 50%, #32004d 100%);
+    --cyber-card: linear-gradient(135deg, #fff0f5 60%, #ff6b9d 100%);
+}
+
+/* 背景極致霓虹科技感 */
+body {
+    background: var(--cyber-bg);
+    color: #fff;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 6px #e91e63c0, 0 0px 1px #fff, 0 0 6px #ff6b9d80;
+}
+
+.navbar,
+.footer {
+    box-shadow: 0 0 24px 2px var(--neon-pink), 0 1px 24px var(--cyber-blue) inset;
+    border-bottom: 2px solid var(--cyber-blue);
+}
+
+.section-title {
+    text-shadow: 0 0 18px var(--cyber-blue), 0 2px 8px var(--neon-pink);
+    letter-spacing: 0.1em;
+}
+
+.card, .project-card, .contact-info {
+    background: var(--cyber-card);
+    border-radius: 18px;
+    border: 2px solid var(--cyber-blue);
+    box-shadow: 0 0 36px 6px var(--neon-pink), 0 2px 28px var(--cyber-blue) inset;
+    transition: box-shadow 0.5s cubic-bezier(.6,0,.2,1);
+}
+
+.card:hover, .project-card:hover, .contact-info:hover {
+    box-shadow: 0 0 80px 12px var(--neon-pink), 0 8px 48px var(--cyber-blue) inset;
+    border-color: var(--neon-pink);
+}
+
+.filter-btn, .navbar-brand, .project-number {
+    text-shadow: 0 0 8px var(--cyber-blue), 0 0 6px var(--neon-pink);
+}
+
+.filter-btn {
+    background: rgba(255,255,255,0.13);
+    border: 2px solid var(--neon-pink);
+    color: #fff;
+    box-shadow: 0 0 18px var(--cyber-blue) inset;
+    font-weight: bold;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--cyber-blue);
+    color: var(--deep-pink);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 24px var(--neon-pink), 0 0 20px var(--cyber-blue) inset;
+}
+
+/* ===== 賽博感的動畫發光光條 ===== */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -30vw;
+    width: 160vw;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--cyber-blue) 25%, var(--neon-pink) 60%, transparent 90%);
+    filter: blur(3px) brightness(1.7);
+    opacity: 0.7;
+    z-index: 1;
+    animation: cyber-glow-bar 7s linear infinite alternate;
+}
+
+@keyframes cyber-glow-bar {
+    0% { left: -30vw; opacity: 0.5;}
+    45% { opacity: 1;}
+    50% { left: 0vw; }
+    100% { left: 40vw; opacity: 0.8;}
+}
+
+.hero-content, .section-title, .project-card, .contact-info, .card {
+    animation: fadeInUp 1.2s cubic-bezier(.5,0,.2,1) both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px) scale(0.97);}
+    to { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+/* ===== 霓虹邊框動畫 ===== */
+.project-card, .card, .contact-info {
+    position: relative;
+    overflow: visible;
+}
+.project-card::after, .card::after, .contact-info::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    inset: -3px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, var(--cyber-blue), var(--neon-pink), var(--cyber-blue));
+    filter: blur(2.7px);
+    opacity: 0.7;
+    z-index: 1;
+    animation: neon-border 3.5s linear infinite;
+}
+@keyframes neon-border {
+    0% { filter: blur(2.5px); }
+    50% { filter: blur(5px) brightness(1.15);}
+    100% { filter: blur(2.5px); }
+}
+
+/* ===== 文字高可讀性 ===== */
+body, .section, .card, .contact-info, .project-card {
+    color: #fff !important;
+    text-shadow: 0 1px 8px #340054b8, 0 0 4px #fff;
+}
+
+a, .nav-link, .project-card h5 {
+    color: var(--cyber-blue) !important;
+    text-shadow: 0 0 6px var(--neon-pink), 0 0 2px #fff;
+}
+a:hover, .nav-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 10px var(--cyber-blue), 0 0 10px var(--neon-pink), 0 0 6px #fff;
+}
+
+/* ===== 滑鼠浮動科技流光效果 ===== */
+.project-card:hover, .card:hover, .contact-info:hover {
+    animation: cyber-hover 0.7s;
+}
+
+@keyframes cyber-hover {
+    0% { box-shadow: 0 0 24px 2px var(--cyber-blue), 0 0 30px var(--neon-pink) inset; }
+    100% { box-shadow: 0 0 80px 16px var(--neon-pink), 0 0 50px var(--cyber-blue) inset; }
+}
+
+/* ===== 其他賽博小細節 ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #2c003d;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--neon-pink), var(--cyber-blue));
+    border-radius: 8px;
+}
+
+/* 霓虹脈衝動畫 */
+.glow-pulse {
+    animation: glowPulse 1.7s infinite alternate cubic-bezier(.3,0,.7,1);
+    box-shadow: 0 0 16px 6px var(--cyber-blue);
+}
+@keyframes glowPulse {
+    from { filter: brightness(1.1) blur(0.5px);}
+    to { filter: brightness(2.4) blur(2px);}
+}
