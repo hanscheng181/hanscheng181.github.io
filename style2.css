@@ -1,51 +1,64 @@
-/* style3.css - 粉紅色系配色 */
-
-/* 粉紅色系配色變數 */
 :root {
     --primary-pink: #ff6b9d;
     --secondary-pink: #ffd3e0;
     --light-pink: #fff0f5;
     --deep-pink: #e91e63;
-    --gradient-pink: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c0 100%);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --neon-blue: #10f1ff;
+    --neon-purple: #be69ff;
+    --gradient-pink: linear-gradient(120deg, #ff6b9d 0%, #be69ff 50%, #10f1ff 100%);
+    --cyber-bg: linear-gradient(120deg, #181824 0%, #2e153b 100%);
+    --glow: 0 0 8px #ff6b9d, 0 0 16px #be69ff, 0 0 32px #10f1ff;
 }
 
 body {
-    font-family: 'Microsoft JhengHei', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: var(--light-pink);
+    font-family: 'Microsoft JhengHei', 'Orbitron', Arial, sans-serif;
+    line-height: 1.7;
+    color: #fff;
+    background: var(--cyber-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* Navigation */
 .navbar {
-    background: rgba(255, 107, 157, 0.95) !important;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(255, 107, 157, 0.3);
-    transition: all 0.3s ease;
+    background: rgba(30, 0, 50, 0.92) !important;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 2px 40px #be69ff99, 0 0 0 2px #ff6b9d inset;
+    border-bottom: 2px solid #10f1ff;
+    transition: all 0.3s;
 }
-
 .navbar-brand {
+    font-family: 'Orbitron', Arial, sans-serif;
     font-weight: bold;
-    font-size: 1.5rem;
-    color: white !important;
+    font-size: 2.2rem;
+    color: var(--neon-blue) !important;
+    text-shadow: var(--glow);
+    letter-spacing: 2px;
 }
-
 .navbar-nav .nav-link {
-    color: white !important;
-    font-weight: 500;
-    margin: 0 10px;
-    transition: all 0.3s ease;
+    color: #fff !important;
+    font-weight: 700;
+    text-shadow: 0 0 4px #ff6b9d;
+    margin: 0 14px;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.22s;
 }
-
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0;
+    background: var(--gradient-pink);
+    transition: 0.35s;
+    margin: auto;
+}
 .navbar-nav .nav-link:hover {
-    color: var(--secondary-pink) !important;
-    transform: translateY(-2px);
+    color: var(--neon-blue) !important;
+    text-shadow: var(--glow);
+}
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
 }
 
 /* Hero Section */
@@ -54,292 +67,419 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    color: white;
+    color: #fff;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 80px #10f1ff99 inset;
 }
-
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="300" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="600" cy="700" r="120" fill="rgba(255,255,255,0.08)"/></svg>');
-    animation: float 20s ease-in-out infinite;
+    top: -60px; left: -60px; right: -60px; bottom: -60px;
+    background: repeating-linear-gradient(
+        120deg, 
+        rgba(255,255,255,0.06) 0 2px, 
+        transparent 2px 40px
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: bg-move 18s linear infinite;
 }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
+@keyframes bg-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 600px; }
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+    text-align: left;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    text-shadow: var(--glow);
+    letter-spacing: 2px;
+    background: var(--gradient-pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: brightness(1.18);
 }
-
 .hero .subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.4rem;
+    margin-bottom: 2.3rem;
+    opacity: 0.95;
+    text-shadow: 0 0 16px #10f1ff88;
 }
-
 .profile-img {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
     object-fit: cover;
-    border: 6px solid white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
+    border: 8px solid #fff;
+    box-shadow: 0 0 40px #ff6b9d88, 0 0 60px #be69ff33;
+    transition: transform 0.3s cubic-bezier(.4,2.7,.6,.9), box-shadow 0.22s;
 }
-
 .profile-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.04) rotate(-2deg);
+    box-shadow: 0 0 80px #ff6b9dcc, 0 0 120px #10f1ff77;
 }
 
-/* Sections */
+/* Section */
 .section {
-    padding: 80px 0;
+    padding: 90px 0 80px 0;
+    position: relative;
+    z-index: 1;
 }
-
 .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--deep-pink);
-    font-weight: bold;
+    font-size: 2.7rem;
+    margin-bottom: 2.5rem;
+    color: var(--primary-pink);
+    font-family: 'Orbitron', Arial, sans-serif;
+    text-shadow: var(--glow);
+    letter-spacing: 1.5px;
 }
 
 .bg-light {
-    background: var(--secondary-pink) !important;
+    background: rgba(255, 219, 241, 0.10) !important;
+    border-radius: 24px;
+    box-shadow: 0 0 50px #be69ff22 inset;
 }
 
-/* Cards */
-.card {
+/* Card / Project */
+.card, .project-card, .contact-info {
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
-}
-
-/* Filter Buttons */
-.filter-buttons {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.filter-btn {
-    background: white;
-    color: var(--primary-pink);
-    border: 2px solid var(--primary-pink);
-    padding: 10px 25px;
-    margin: 5px;
-    border-radius: 25px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: var(--primary-pink);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
-}
-
-/* Project Grid */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.project-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.15);
-    transition: all 0.3s ease;
-    cursor: pointer;
+    border-radius: 18px;
+    background: rgba(32, 0, 40, 0.80);
+    box-shadow: 0 8px 40px #be69ff33, 0 0 10px #10f1ff44 inset;
+    color: #fff;
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
+.card:hover, .project-card:hover, .contact-info:hover {
+    transform: translateY(-6px) scale(1.025);
+    box-shadow: 0 18px 50px #ff6b9dcc, 0 0 40px #10f1ff88 inset;
+}
 .project-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 4px;
     background: var(--gradient-pink);
+    filter: blur(1.2px);
+    z-index: 2;
+    animation: neon-bar 3.2s linear infinite alternate;
 }
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.25);
+@keyframes neon-bar {
+    0% { filter: brightness(1.2); }
+    100% { filter: brightness(2.4); }
 }
-
 .project-number {
     background: var(--gradient-pink);
-    color: white;
-    width: 40px;
-    height: 40px;
+    color: #fff;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 0 8px #10f1ff88;
     margin-bottom: 1rem;
 }
-
 .project-card h5 {
-    color: var(--deep-pink);
+    color: var(--neon-blue);
     margin-bottom: 1rem;
     font-weight: bold;
+    text-shadow: 0 0 12px #10f1ff88;
 }
 
-/* Contact Section */
+/* Filter Button */
+.filter-btn {
+    background: transparent;
+    color: var(--primary-pink);
+    border: 2px solid var(--neon-blue);
+    padding: 12px 30px;
+    margin: 8px;
+    border-radius: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 0 8px #ff6b9d44;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--gradient-pink);
+    color: #fff;
+    box-shadow: 0 0 28px #be69ff99, 0 2px 30px #10f1ff55;
+    border: 2px solid #fff;
+}
+
+/* Contact */
 .contact-info {
-    background: white;
-    padding: 3rem;
+    background: rgba(255,255,255,0.06);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+    box-shadow: 0 10px 30px #be69ff55, 0 0 32px #10f1ff33 inset;
 }
-
 .contact-item {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
-    padding: 1rem;
-    background: var(--light-pink);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    padding: 1.2rem;
+    background: rgba(255, 107, 157, 0.07);
+    border-radius: 13px;
+    box-shadow: 0 0 10px #ff6b9d44 inset;
+    transition: transform 0.25s;
 }
-
 .contact-item:hover {
-    transform: translateX(10px);
+    transform: translateX(14px) scale(1.03);
+    box-shadow: 0 0 20px #10f1ff99;
 }
-
 .contact-item i {
-    font-size: 2rem;
-    color: var(--primary-pink);
-    margin-right: 1rem;
-    width: 50px;
+    font-size: 2.1rem;
+    color: var(--neon-blue);
+    margin-right: 1.2rem;
+    width: 48px;
+    filter: drop-shadow(0 0 8px #10f1ff66);
 }
-
 .contact-item a {
-    color: var(--deep-pink) !important;
-    text-decoration: none;
-}
-
-.contact-item a:hover {
     color: var(--primary-pink) !important;
+    text-decoration: none;
+    font-weight: 600;
+    text-shadow: 0 0 6px #be69ff55;
+}
+.contact-item a:hover {
+    color: var(--neon-blue) !important;
 }
 
 /* Footer */
 .footer {
     background: var(--deep-pink);
-    color: white;
+    color: #fff;
     text-align: center;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    text-shadow: var(--glow);
+    box-shadow: 0 -4px 32px #ff6b9d44;
 }
 
-/* Animations */
+/* Animation for fade-in section */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
+    transform: translateY(36px) scale(0.98);
+    filter: blur(2.2px);
+    transition: all 0.8s cubic-bezier(.77,0,.18,1.18);
 }
-
 .fade-in.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
 }
 
-/* Responsive Design */
+/* Responsive design (略同前，可根據需求微調) */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero h1 { font-size: 2.3rem; }
+    .profile-img { width: 190px; height: 190px; }
+    .section-title { font-size: 1.7rem; }
+}
+@media (max-width: 576px) {
+    .hero h1 { font-size: 1.2rem; }
+    .hero .subtitle { font-size: 1.05rem; }
+    .section { padding: 36px 0; }
+    .profile-img { width: 130px; height: 130px; }
+}
+/* ========== 加強賽博霓虹外框&流光動畫 ========== */
+
+@keyframes cyber-neon-border {
+    0% {
+        box-shadow: 0 0 8px #10f1ff, 0 0 16px #ff6b9d, 0 0 0 #be69ff, 0 0 0 #10f1ff;
+        border-color: #ff6b9d;
     }
-    
-    .profile-img {
-        width: 250px;
-        height: 250px;
+    25% {
+        box-shadow: 0 0 20px #be69ff, 0 0 32px #ff6b9d, 0 0 16px #10f1ff, 0 0 0 #be69ff;
+        border-color: #10f1ff;
     }
-    
-    .project-grid {
-        grid-template-columns: 1fr;
+    50% {
+        box-shadow: 0 0 28px #10f1ff, 0 0 40px #be69ff, 0 0 24px #ff6b9d, 0 0 16px #ff6b9d;
+        border-color: #be69ff;
     }
-    
-    .section-title {
-        font-size: 2rem;
+    75% {
+        box-shadow: 0 0 20px #be69ff, 0 0 28px #10f1ff, 0 0 32px #ff6b9d, 0 0 0 #10f1ff;
+        border-color: #ff6b9d;
     }
-    
-    .filter-btn {
-        padding: 8px 20px;
-        font-size: 0.9rem;
-    }
-    
-    .project-card {
-        padding: 1.5rem;
-    }
-    
-    .contact-info {
-        padding: 2rem;
+    100% {
+        box-shadow: 0 0 8px #10f1ff, 0 0 16px #ff6b9d, 0 0 0 #be69ff, 0 0 0 #10f1ff;
+        border-color: #ff6b9d;
     }
 }
 
-@media (max-width: 576px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero .subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .section {
-        padding: 60px 0;
-    }
-    
-    .profile-img {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .project-card {
-        padding: 1.2rem;
-    }
-    
-    .contact-info {
-        padding: 1.5rem;
-    }
-    
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .contact-item i {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
+/* 卡片/主要區塊 霓虹動態外框 */
+.card, .project-card, .contact-info {
+    position: relative;
+    border: 2.5px solid #ff6b9d;
+    animation: cyber-neon-border 4.5s linear infinite;
+    box-shadow: 0 0 40px #10f1ff55, 0 0 80px #be69ff22 inset;
+    overflow: visible;
+}
+
+/* 霓虹四角亮點動態 */
+.card::after, .project-card::after, .contact-info::after {
+    content: "";
+    position: absolute;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 3;
+    box-shadow:
+        0 0 14px 8px #10f1ff,
+        0 0 24px 16px #be69ff88;
+    animation: neon-corners 2.5s linear infinite alternate;
+}
+.card::after      { left: -20px; top: -20px; }
+.project-card::after { right: -20px; bottom: -20px; }
+.contact-info::after { left: -20px; bottom: -20px; }
+@keyframes neon-corners {
+    0%   { opacity: 0.85; filter: blur(2px);}
+    60%  { opacity: 1; filter: blur(0);}
+    100% { opacity: 0.6; filter: blur(4px);}
+}
+
+/* 流光特效-橫向碎片 */
+.card::before, .project-card::before, .contact-info::before {
+    content: "";
+    position: absolute;
+    left: -30px; right: -30px; top: 25%; height: 6px;
+    background: linear-gradient(
+        90deg, 
+        transparent 0%, 
+        #fff0f5 20%, 
+        #ff6b9d 40%, 
+        #10f1ff 55%, 
+        #fff0f5 80%, 
+        transparent 100%
+    );
+    border-radius: 12px;
+    opacity: 0.55;
+    filter: blur(2px);
+    z-index: 2;
+    animation: glow-run 2.5s cubic-bezier(.6,0,.8,1.2) infinite alternate;
+}
+@keyframes glow-run {
+    0% { top: 25%; opacity: 0.5; }
+    40% { top: 50%; opacity: 1; }
+    100% { top: 80%; opacity: 0.7; }
+}
+
+/* ========== 粒子流動背景（賽博龐克 HUD 粒子） ========== */
+body::after {
+    content: "";
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        repeating-radial-gradient(circle at 20% 40%, #fff8 0px, #be69ff 1.5px, transparent 2.5px 60px),
+        repeating-radial-gradient(circle at 68% 85%, #fff9 0px, #10f1ff 1.3px, transparent 2px 40px),
+        repeating-radial-gradient(circle at 40% 77%, #fff8 0px, #ff6b9d 1.8px, transparent 2.2px 44px);
+    opacity: 0.36;
+    animation: hud-particles 9s linear infinite alternate;
+}
+@keyframes hud-particles {
+    0%   { background-position: 0 0, 0 0, 0 0; }
+    50%  { background-position: 40px 50px, 30px 60px, 24px 44px; }
+    100% { background-position: 80px 90px, 60px 120px, 48px 88px; }
+}
+
+/* ========== 文字Glow與可讀性 ========== */
+.card, .project-card, .contact-info,
+.card *, .project-card *, .contact-info * {
+    color: #fff;
+    text-shadow: 0 0 10px #ffb4d2, 0 0 18px #10f1ff33;
+}
+
+/* 按鈕霓虹外框閃爍 */
+.filter-btn {
+    box-shadow: 0 0 12px #ff6b9daa, 0 0 18px #10f1ff77;
+    border: 2px solid #10f1ff;
+    animation: cyber-neon-border 3.6s linear infinite;
+}
+.filter-btn.active, .filter-btn:hover {
+    border: 2px solid #fff;
+    box-shadow: 0 0 32px #10f1ffcc, 0 0 24px #ff6b9dcc;
+}
+
+/* ========== 其餘主體配合原本設定 ========== */
+/* ...保留上面給你的主題CSS，將這一段附加在最後即可... */
+/* 賽博雷射橫向掃描線 (主卡片/專案) */
+.card::before,
+.project-card::before,
+.contact-info::before {
+    content: "";
+    position: absolute;
+    left: -15%;
+    top: 0;
+    width: 130%;
+    height: 4px;
+    background: linear-gradient(
+        90deg, 
+        transparent 0%,
+        #fff 25%,
+        #10f1ff 45%,
+        #be69ff 60%,
+        #ff6b9d 80%,
+        transparent 100%
+    );
+    filter: blur(0.8px) brightness(2.2);
+    opacity: 0.8;
+    z-index: 4;
+    border-radius: 2px;
+    animation: laser-move 2.4s cubic-bezier(.4,0,.7,1) infinite;
+    pointer-events: none;
+}
+
+@keyframes laser-move {
+    0% { top: 0; opacity: 0.3; }
+    20% { opacity: 1; }
+    40% { top: 60%; opacity: 0.8; }
+    50% { top: 100%; opacity: 0.45; }
+    80% { opacity: 0.12; }
+    100% { top: 0; opacity: 0.3; }
+}
+
+/* 賽博側邊直向雷射條（極科技感） */
+.card::after,
+.project-card::after,
+.contact-info::after {
+    content: "";
+    position: absolute;
+    right: 0; top: 0;
+    width: 6px;
+    height: 120%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        #fff 8%,
+        #10f1ff 40%,
+        #ff6b9d 85%,
+        transparent 100%
+    );
+    filter: blur(1.2px) brightness(2.4);
+    opacity: 0.46;
+    border-radius: 3px;
+    animation: laser-side 2.9s cubic-bezier(.6,0,.4,1) infinite alternate;
+    pointer-events: none;
+}
+@keyframes laser-side {
+    0% { height: 80%; opacity: 0.25; }
+    30% { opacity: 1; }
+    70% { height: 140%; opacity: 0.42;}
+    100% { height: 80%; opacity: 0.15; }
 }
