@@ -40,7 +40,92 @@ body::before {
     100% { left: 97vw; opacity: 0.24;}
 }
 
-/* Navigation */
+/* ========== 動態 HUD 圓環（頭像外框） ========== */
+.profile-img-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.hud-ring {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 2.5px dashed #00ffe7;
+    box-shadow: 0 0 24px #ff41f4, 0 0 34px #00ffe7;
+    transform: translate(-50%,-50%);
+    animation: rotate-hud 7.5s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+}
+@keyframes rotate-hud {
+    100% { transform: translate(-50%,-50%) rotate(360deg);}
+}
+
+/* Profile Image 霓虹 Glow */
+.profile-img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--cyber-blue);
+    box-shadow: 
+        0 0 44px var(--cyber-pink),
+        0 0 82px var(--cyber-blue),
+        0 2px 18px #181c36;
+    background: rgba(30,25,52,0.7);
+    margin-top: 20px;
+    transition: box-shadow 0.32s, transform 0.32s, border-color 0.22s;
+    position: relative;
+    z-index: 2;
+}
+.profile-img:hover {
+    border-color: var(--cyber-yellow);
+    box-shadow:
+        0 0 88px var(--cyber-yellow),
+        0 0 62px var(--cyber-blue),
+        0 6px 24px var(--cyber-pink);
+    transform: scale(1.09) rotate(-2deg);
+    filter: brightness(1.09) contrast(1.13);
+}
+@media (max-width: 768px) {
+    .hud-ring { width: 160px; height: 160px; }
+    .profile-img { width: 130px; height: 130px; }
+}
+@media (max-width: 576px) {
+    .hud-ring { width: 90px; height: 90px; }
+    .profile-img { width: 70px; height: 70px; }
+}
+
+/* ========== 打字機動畫 Title ========== */
+.typewriter-title {
+    display: inline-block;
+    overflow: hidden;
+    border-right: .15em solid var(--cyber-yellow);
+    white-space: nowrap;
+    animation:
+        typing 2.8s steps(16, end),
+        blink-caret .8s step-end infinite alternate;
+    color: var(--cyber-pink);
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    background: rgba(16,12,30,0.6);
+    text-shadow: 0 0 16px var(--cyber-pink), 0 0 8px var(--cyber-blue), 0 0 2px #fff;
+    padding: 10px 18px;
+    border-radius: 14px;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blink-caret {
+    0%, 100% { border-color: var(--cyber-yellow); }
+    50% { border-color: transparent; }
+}
+@media (max-width: 768px) {
+    .typewriter-title { font-size: 1.5rem; }
+}
+
+/* ========== Navigation ========== */
 .navbar {
     background: rgba(27, 18, 46, 0.97) !important;
     backdrop-filter: blur(10px);
@@ -69,7 +154,7 @@ body::before {
     transform: translateY(-2px) scale(1.07);
 }
 
-/* Hero Section */
+/* ========== Hero Section ========== */
 .hero {
     background: linear-gradient(120deg, #1b0935 30%, #24153b 100%);
     min-height: 100vh;
@@ -102,7 +187,6 @@ body::before {
     color: var(--cyber-pink);
     text-shadow: 0 0 22px var(--cyber-pink), 0 0 14px var(--cyber-blue), 0 0 3px #fff;
     letter-spacing: 3px;
-    /* Glow */
     animation: glow-flicker 2.2s alternate infinite;
 }
 @keyframes glow-flicker {
@@ -120,44 +204,10 @@ body::before {
     border-radius: 12px;
     display: inline-block;
     padding: 8px 18px;
-    /* Glow */
     box-shadow: 0 0 16px var(--cyber-blue);
 }
 
-/* Cyberpunk Profile Img */
-.profile-img {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid var(--cyber-blue);
-    box-shadow: 
-        0 0 44px var(--cyber-pink),
-        0 0 82px var(--cyber-blue),
-        0 2px 18px #181c36;
-    background: rgba(30,25,52,0.7);
-    margin-top: 20px;
-    transition: box-shadow 0.32s, transform 0.32s, border-color 0.22s;
-    position: relative;
-    z-index: 2;
-}
-.profile-img:hover {
-    border-color: var(--cyber-yellow);
-    box-shadow:
-        0 0 88px var(--cyber-yellow),
-        0 0 62px var(--cyber-blue),
-        0 6px 24px var(--cyber-pink);
-    transform: scale(1.09) rotate(-2deg);
-    filter: brightness(1.09) contrast(1.13);
-}
-
-/* Sections */
-.section {
-    padding: 80px 0;
-    background: var(--cyber-panel);
-    border-radius: 20px;
-    box-shadow: 0 0 26px var(--cyber-blue) inset;
-}
+/* ========== 區塊標題 Glow ========== */
 .section-title {
     text-align: center;
     font-size: 2.4rem;
@@ -169,7 +219,6 @@ body::before {
     border-radius: 14px;
     display: inline-block;
     padding: 10px 30px;
-    /* Glow */
     text-shadow: 0 0 22px var(--cyber-pink), 0 0 14px var(--cyber-blue), 0 0 6px #fff;
     animation: glow-flicker 2.4s alternate infinite;
 }
@@ -177,7 +226,7 @@ body::before {
     background: var(--cyber-card) !important;
 }
 
-/* Cards */
+/* ========== 卡片/內容 Glow ========== */
 .card {
     border: none;
     border-radius: 16px;
@@ -191,7 +240,8 @@ body::before {
     box-shadow: 0 20px 56px var(--cyber-yellow), 0 4px 24px var(--cyber-blue) inset;
 }
 .card p, .card li {
-    color: #ffe;
+    color: #fff !important;
+    text-shadow: 0 0 6px #181c36;
 }
 .card-title, h5.card-title, .project-title {
     color: var(--cyber-pink);
@@ -199,7 +249,6 @@ body::before {
     font-weight: 900;
     font-size: 1.55rem;
     letter-spacing: 2px;
-    /* Glow */
     animation: glow-flicker 2.5s alternate infinite;
 }
 .project-title {
@@ -214,59 +263,40 @@ body::before {
     box-shadow: 0 0 28px var(--cyber-pink);
 }
 
-/* Filter Buttons */
-.filter-buttons {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-.filter-btn {
-    background: var(--cyber-card);
-    color: var(--cyber-blue);
-    border: 2.2px solid var(--cyber-pink);
-    padding: 10px 26px;
-    margin: 7px 6px 16px 0;
-    border-radius: 22px;
-    font-weight: bold;
-    font-size: 1.09rem;
-    transition: background 0.22s, color 0.22s, border-color 0.22s;
-    box-shadow: 0 0 12px var(--cyber-blue);
-    letter-spacing: 1.1px;
-}
-.filter-btn:hover, .filter-btn.active {
-    background: var(--cyber-gradient);
-    color: #18122a;
-    border-color: var(--cyber-yellow);
-    box-shadow: 0 0 28px var(--cyber-yellow), 0 0 18px var(--cyber-pink);
-}
-
-/* Project Grid */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
+/* ========== 作品集卡片hover螢光外框 ========== */
 .project-card {
     background: var(--cyber-card);
     color: #fff;
     padding: 2rem;
     border-radius: 17px;
     box-shadow: 0 5px 22px var(--cyber-pink), 0 2px 14px var(--cyber-blue);
-    transition: all 0.28s;
-    cursor: pointer;
     position: relative;
     overflow: hidden;
+    border: 2.2px solid transparent;
+    transition: box-shadow 0.28s, border-color 0.26s;
 }
-.project-card::before {
+.project-card::after {
     content: '';
+    pointer-events: none;
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 4px;
-    background: var(--cyber-gradient);
+    inset: -5px;
+    border-radius: 21px;
+    border: 2.5px solid transparent;
+    box-shadow: 0 0 0 0 transparent;
+    transition: border-color 0.22s, box-shadow 0.22s;
 }
 .project-card:hover {
-    transform: translateY(-9px) scale(1.035);
-    box-shadow: 0 18px 35px var(--cyber-yellow), 0 4px 16px var(--cyber-blue);
+    box-shadow: 0 0 55px var(--cyber-yellow), 0 0 36px var(--cyber-pink);
+    border-color: var(--cyber-blue);
+}
+.project-card:hover::after {
+    border-image: linear-gradient(120deg, #ff41f4, #00ffe7, #fff83d) 1;
+    box-shadow: 0 0 36px #fff83d, 0 0 36px #00ffe7;
+    animation: neon-glow-border 1.7s alternate infinite;
+}
+@keyframes neon-glow-border {
+    0% { box-shadow: 0 0 36px #fff83d, 0 0 36px #00ffe7; }
+    100% { box-shadow: 0 0 66px #ff41f4, 0 0 52px #00ffe7; }
 }
 .project-number {
     background: var(--cyber-gradient);
@@ -287,11 +317,10 @@ body::before {
     letter-spacing: 1.2px;
     margin-bottom: 1.1rem;
     text-shadow: 0 0 16px var(--cyber-pink), 0 0 8px var(--cyber-blue), 0 0 2px #fff;
-    /* Glow */
     animation: glow-flicker 2.3s alternate infinite;
 }
 
-/* Contact Section */
+/* ========== Contact Section ========== */
 .contact-info {
     background: var(--cyber-panel);
     padding: 3rem;
@@ -304,7 +333,6 @@ body::before {
     text-shadow: 0 0 16px var(--cyber-pink), 0 0 8px var(--cyber-blue), 0 0 2px #fff;
     font-size: 1.8rem;
     letter-spacing: 1.8px;
-    /* Glow */
     animation: glow-flicker 2.7s alternate infinite;
 }
 .contact-item {
@@ -339,7 +367,7 @@ body::before {
     color: var(--cyber-pink) !important;
 }
 
-/* Footer */
+/* ========== Footer ========== */
 .footer {
     background: var(--cyber-pink);
     color: #fff;
@@ -349,11 +377,35 @@ body::before {
     font-weight: 700;
     box-shadow: 0 -2px 28px var(--cyber-blue);
     text-shadow: 0 0 16px var(--cyber-yellow), 0 0 8px var(--cyber-blue), 0 0 2px #fff;
-    /* Glow */
     animation: glow-flicker 3.2s alternate infinite;
 }
 
-/* Animations */
+/* ========== Filter Buttons ========== */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.filter-btn {
+    background: var(--cyber-card);
+    color: var(--cyber-blue);
+    border: 2.2px solid var(--cyber-pink);
+    padding: 10px 26px;
+    margin: 7px 6px 16px 0;
+    border-radius: 22px;
+    font-weight: bold;
+    font-size: 1.09rem;
+    transition: background 0.22s, color 0.22s, border-color 0.22s;
+    box-shadow: 0 0 12px var(--cyber-blue);
+    letter-spacing: 1.1px;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--cyber-gradient);
+    color: #18122a;
+    border-color: var(--cyber-yellow);
+    box-shadow: 0 0 28px var(--cyber-yellow), 0 0 18px var(--cyber-pink);
+}
+
+/* ========== Animations ========== */
 .fade-in {
     opacity: 0;
     transform: translateY(32px) scale(0.98);
@@ -364,9 +416,9 @@ body::before {
     transform: none;
 }
 
-/* 響應式 */
+/* ========== 響應式設計 ========== */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.1rem; }
+    .hero h1, .typewriter-title { font-size: 1.6rem; }
     .profile-img { width: 130px; height: 130px; }
     .project-grid { grid-template-columns: 1fr; }
     .section-title { font-size: 1.3rem; }
@@ -375,12 +427,21 @@ body::before {
     .contact-info { padding: 1.3rem; }
 }
 @media (max-width: 576px) {
-    .hero h1 { font-size: 1.3rem; }
+    .hero h1, .typewriter-title { font-size: 1.05rem; }
     .hero .subtitle { font-size: 1.0rem; }
     .section { padding: 50px 0; }
-    .profile-img { width: 80px; height: 80px; }
+    .profile-img { width: 70px; height: 70px; }
     .project-card { padding: 0.8rem; }
     .contact-info { padding: 0.7rem; }
     .contact-item { flex-direction: column; text-align: center; }
     .contact-item i { margin-right: 0; margin-bottom: 0.5rem; }
+}
+
+/* ========== 內容字高對比，易讀性 ========== */
+.section, .card, .contact-info, .project-card {
+    color: #fff !important;
+}
+.project-card p, .card p, .card li, .contact-info {
+    color: #fff !important;
+    text-shadow: 0 0 6px #181c36;
 }
