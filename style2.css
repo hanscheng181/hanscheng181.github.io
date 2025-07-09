@@ -1,316 +1,216 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron:wght@700;900&display=swap');
-
-/* 1. 賽博霓虹色+未來感基底 */
+/* 賽博龐克全局變數 */
 :root {
-  --neon-pink: #fe40e8;
-  --neon-blue: #23e8ff;
-  --neon-violet: #7f60ff;
+  --neon-pink: #ff4aff;
+  --neon-blue: #00ffe7;
   --neon-yellow: #fff500;
-  --neon-cyan: #2cfff6;
-  --cyber-bg: #151628;
-  --cyber-panel: #1f223b;
-  --cyber-card: #241637;
-  --glow-pink: 0 0 18px #fe40e880, 0 0 48px #23e8ff70;
-  --glow-blue: 0 0 14px #23e8ffb0, 0 0 44px #7f60ff80;
-  --glow-mix: 0 0 22px #fe40e8cc, 0 0 44px #23e8ffbb, 0 0 12px #fff50077;
-  --cyber-gradient: linear-gradient(120deg, #fe40e8 0%, #7f60ff 42%, #23e8ff 73%, #fff500 100%);
-  --text-glow: 0 0 16px #fff50099, 0 0 10px #fe40e8, 0 0 2px #23e8ff;
+  --neon-green: #29ff77;
+  --background: #11151c;
+  --panel: #23263a;
+  --card-glow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-pink);
+  --btn-glow: 0 0 12px var(--neon-blue), 0 0 22px var(--neon-pink);
+  --text-shadow: 0 0 8px var(--neon-pink), 0 0 2px var(--neon-yellow);
+  --border-gradient: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-yellow), var(--neon-blue));
 }
 
+/* 背景、字體、基礎設定 */
 body {
-  font-family: 'Orbitron', 'Noto Sans TC', Arial, '微軟正黑體', sans-serif;
-  background: radial-gradient(ellipse at 65% 20%, #321a4d 0%, #151628 100%);
-  color: #e7e0fa;
-  letter-spacing: 1.1px;
+  background: var(--background);
+  color: #f3f3f7;
+  font-family: 'Orbitron', 'Noto Sans TC', '微軟正黑體', Arial, sans-serif;
+  letter-spacing: 1px;
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
 }
 
-/* 2. 未來感導航＋LOGO霓虹 */
+/* 導航條 */
 .navbar {
-  background: rgba(20,18,45,0.94)!important;
-  box-shadow: 0 2px 34px #fe40e8a1, 0 2px 26px #23e8ff51;
-  border-bottom: 2.5px solid var(--neon-blue);
-  transition: background 0.3s, box-shadow 0.4s;
+  background: rgba(20,18,45,0.92)!important;
+  box-shadow: 0 2px 24px var(--neon-pink);
+  border-bottom: 2px solid var(--neon-blue);
+  transition: background 0.3s;
 }
-.navbar-brand {
-  font-family: 'Orbitron', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 2rem;
-  color: var(--neon-pink)!important;
-  letter-spacing: 3px;
-  text-shadow: var(--text-glow), 0 0 28px var(--neon-blue);
-  display: flex;
-  align-items: center;
-}
-.cyber-logo {
-  width: 40px; height: 40px;
-  margin-right: 15px;
-  vertical-align: middle;
-  filter: drop-shadow(0 0 12px var(--neon-blue));
-  animation: neon-glow 2s infinite alternate;
-}
-.nav-link {
+.navbar-brand, .nav-link {
   color: var(--neon-blue)!important;
   font-weight: bold;
-  font-size: 1.08rem;
-  text-shadow: var(--text-glow);
-  letter-spacing: 2px;
-  transition: color 0.22s;
+  text-shadow: var(--text-shadow);
+  transition: color 0.3s;
 }
-.nav-link:hover {
+.navbar-brand:hover, .nav-link:hover {
   color: var(--neon-pink)!important;
   text-shadow: 0 0 18px var(--neon-yellow);
 }
+
 .navbar-toggler {
   border-color: var(--neon-blue);
 }
+
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 32 32' fill='%2323e8ff' xmlns='http://www.w3.org/2000/svg'%3e%3crect y='6' width='32' height='4' rx='2'/%3e%3crect y='14' width='32' height='4' rx='2'/%3e%3crect y='22' width='32' height='4' rx='2'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 32 32' fill='%2300ffe7' xmlns='http://www.w3.org/2000/svg'%3e%3crect y='6' width='32' height='4' rx='2'/%3e%3crect y='14' width='32' height='4' rx='2'/%3e%3crect y='22' width='32' height='4' rx='2'/%3e%3c/svg%3e");
 }
 
-/* 3. Hero＋跑馬燈 */
+/* 首頁 Hero Section */
 .hero {
-  background: linear-gradient(110deg, #281f4a 0%, #151628 80%);
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+  background: radial-gradient(circle at 40% 50%, #0f183b 50%, #18192a 100%);
+  padding: 110px 0 70px 0;
+  box-shadow: 0 0 60px var(--neon-blue) inset;
+  min-height: 70vh;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 80px var(--neon-blue) inset, 0 0 140px var(--neon-pink) inset;
-}
-.cyber-marquee {
-  position: absolute;
-  top: 0; left: 0; width: 100%;
-  height: 42px;
-  background: linear-gradient(90deg, #fe40e8 15%, #23e8ff 85%);
-  color: #fff500;
-  font-family: 'Orbitron', Arial, sans-serif;
-  letter-spacing: 2px;
-  text-shadow: 0 0 18px #fff, 0 0 12px #23e8ff;
-  font-size: 1.12rem;
-  overflow: hidden;
-  z-index: 10;
-  box-shadow: 0 0 18px #23e8ff, 0 0 14px #fe40e8;
-}
-.cyber-marquee span {
-  display: inline-block;
-  padding-left: 100vw;
-  white-space: nowrap;
-  animation: marquee-move 16s linear infinite;
-}
-@keyframes marquee-move {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(-120vw);}
 }
 
-.hero-content h1, #name {
-  font-size: 3.3rem;
-  font-family: 'Orbitron', Arial, sans-serif;
-  font-weight: 900;
+.hero-content h1 {
+  font-size: 3.2rem;
   color: var(--neon-pink);
-  letter-spacing: 5px;
-  text-shadow: var(--text-glow), 0 0 44px var(--neon-blue);
-  animation: neon-glow 2.5s alternate infinite;
-}
-@keyframes neon-glow {
-  to { text-shadow: 0 0 34px var(--neon-pink), 0 0 80px var(--neon-yellow);}
-}
-.subtitle, #title {
-  font-size: 1.26rem;
-  color: var(--neon-blue);
-  font-weight: 700;
-  text-shadow: 0 0 10px var(--neon-blue);
-  opacity: 0.98;
-  margin-bottom: 1.5rem;
+  font-weight: 900;
+  text-shadow: var(--text-shadow);
+  letter-spacing: 2px;
+  animation: neon-glow 2s alternate infinite;
 }
 
-/* 4. 霓虹大頭貼 */
+@keyframes neon-glow {
+  to { text-shadow: 0 0 24px var(--neon-pink), 0 0 60px var(--neon-yellow);}
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: var(--neon-blue);
+  font-weight: 600;
+  text-shadow: 0 0 8px var(--neon-blue);
+}
+
 .profile-img {
-  width: 230px;
-  height: 230px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  border: 4.5px solid var(--neon-blue);
-  box-shadow: 0 0 32px var(--neon-pink), 0 0 44px var(--neon-blue), 0 2px 22px #fff;
+  border: 4px solid var(--neon-blue);
+  box-shadow: 0 0 32px var(--neon-pink), 0 0 44px var(--neon-blue);
   object-fit: cover;
   margin-top: 20px;
-  animation: flicker 2.2s infinite alternate;
+  animation: flicker 2.5s infinite alternate;
 }
 @keyframes flicker {
-  0% { filter: brightness(0.92);}
-  55% { filter: brightness(1);}
-  100% { filter: brightness(1.13);}
+  0% { filter: brightness(0.93);}
+  65% { filter: brightness(1);}
+  100% { filter: brightness(1.08);}
 }
 
-/* 5. Section/標題/卡片 */
+/* Section 通用 */
 .section, .bg-light {
-  background: var(--cyber-panel);
-  box-shadow: 0 0 42px var(--neon-pink) inset;
-  padding: 64px 0 36px 0;
+  background: var(--panel);
+  box-shadow: 0 0 40px var(--neon-pink) inset;
+  padding: 60px 0 48px 0;
   border-radius: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 42px;
 }
-.bg-light {
-  background: rgba(35, 38, 58, 0.97) !important;
-}
+
+/* 標題 */
 .section-title {
   color: var(--neon-yellow);
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-family: 'Orbitron', Arial, sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 3px;
-  margin-bottom: 36px;
-  text-shadow: var(--text-glow);
-  animation: neon-pulse 1.8s infinite alternate;
-}
-@keyframes neon-pulse {
-  0% {text-shadow: 0 0 14px var(--neon-blue);}
-  100% {text-shadow: 0 0 36px var(--neon-pink);}
+  margin-bottom: 38px;
+  text-shadow: var(--text-shadow);
 }
 
+/* 卡片 */
 .card {
-  background: var(--cyber-card);
-  border: 2.5px solid transparent;
-  border-radius: 19px;
-  box-shadow: var(--glow-mix);
+  background: rgba(28, 32, 56, 0.96);
+  border: 2px solid transparent;
+  border-radius: 22px;
+  box-shadow: var(--card-glow);
   overflow: hidden;
   margin-bottom: 2rem;
-  transition: box-shadow 0.32s, border-color 0.18s;
-  position: relative;
+  transition: box-shadow 0.4s, border-color 0.2s;
 }
 .card:hover {
-  border-image: var(--cyber-gradient) 1;
-  box-shadow: 0 0 65px var(--neon-yellow), var(--glow-mix);
-}
-.card:before {
-  content: '';
-  position: absolute; top:0; left:0; width: 100%; height: 6px;
-  background: var(--cyber-gradient);
-  filter: blur(0.7px); opacity:0.32;
-  z-index:2;
+  border-image: var(--border-gradient) 1;
+  box-shadow: 0 0 60px var(--neon-yellow), var(--card-glow);
 }
 
-.filter-buttons { text-align: center; margin-bottom: 2.5rem; }
+/* 按鈕（濾鏡、互動） */
 .filter-btn, .btn {
-  background: linear-gradient(90deg, #241637 0%, #321a4d 100%);
+  background: none;
   color: var(--neon-blue);
-  border: 2.5px solid var(--neon-pink);
-  box-shadow: var(--glow-pink);
+  border: 2px solid var(--neon-pink);
+  box-shadow: var(--btn-glow);
   font-weight: bold;
   font-size: 1.1rem;
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 10px 30px;
-  margin: 6px 12px 18px 0;
+  margin: 5px 12px 18px 0;
+  transition: background 0.22s, color 0.22s, border-color 0.22s;
   position: relative;
   overflow: hidden;
-  transition: background 0.18s, color 0.18s, border-color 0.19s;
 }
 .filter-btn.active, .btn:hover {
-  background: var(--cyber-gradient);
-  color: #18192a;
+  background: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-blue) 100%);
+  color: #121b2a;
   border-color: var(--neon-yellow);
-  box-shadow: 0 0 28px var(--neon-yellow), var(--btn-glow);
-}
-.filter-btn::after, .btn::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(120deg, transparent 60%, var(--neon-yellow) 100%);
-  opacity: 0.12;
-  pointer-events: none;
-  transition: opacity 0.2s;
-  z-index: 1;
+  box-shadow: 0 0 34px var(--neon-yellow), var(--btn-glow);
 }
 
-/* 6. 卡片Grid */
+/* Projects Grid & Card */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 32px;
   margin-top: 28px;
 }
 .project-card {
-  background: var(--cyber-card);
+  background: rgba(18,24,34,0.95);
   border: 2.5px solid var(--neon-blue);
-  border-radius: 18px;
-  box-shadow: var(--glow-blue);
+  border-radius: 20px;
+  box-shadow: 0 0 24px var(--neon-blue), 0 0 32px var(--neon-pink);
   padding: 36px 24px 22px 24px;
   cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.16s, transform 0.16s;
+  transition: border-color 0.3s, box-shadow 0.2s, transform 0.18s;
   position: relative;
-  overflow: hidden;
 }
 .project-card:hover {
   border-color: var(--neon-yellow);
-  box-shadow: 0 0 44px var(--neon-yellow), 0 0 22px var(--neon-pink);
-  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 0 44px var(--neon-yellow), 0 0 18px var(--neon-pink);
+  transform: translateY(-8px) scale(1.03);
 }
 .project-number {
-  font-size: 2.0rem;
+  font-size: 2.1rem;
   color: var(--neon-pink);
   font-family: 'Orbitron', Arial, sans-serif;
   position: absolute;
-  top: 18px;
-  right: 22px;
-  text-shadow: 0 0 12px var(--neon-yellow), 0 0 32px var(--neon-pink);
-  animation: projectnum-glow 1.3s alternate infinite;
-}
-@keyframes projectnum-glow {
-  from { text-shadow: 0 0 4px var(--neon-blue);}
-  to { text-shadow: 0 0 14px var(--neon-pink), 0 0 34px var(--neon-yellow);}
+  top: 20px;
+  right: 28px;
+  text-shadow: 0 0 8px var(--neon-yellow);
 }
 
-/* 7. 聯絡區塊 */
-.contact-info {
-  background: rgba(24, 26, 44, 0.98);
-  padding: 2.3rem;
-  border-radius: 18px;
-  box-shadow: 0 8px 36px var(--neon-blue), 0 10px 36px rgba(255, 107, 157, 0.15);
-}
-.contact-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: rgba(36,36,70,0.65);
-  border-radius: 12px;
+/* 關於我/聯絡我 Contact Info */
+.contact-info, .contact-item {
+  background: transparent;
+  border: none;
+  box-shadow: none;
   color: var(--neon-green);
-  transition: transform 0.23s;
-}
-.contact-item:hover {
-  transform: translateX(8px) scale(1.01);
-  background: rgba(36,36,70,0.92);
+  font-size: 1.15rem;
 }
 .contact-item i {
-  font-size: 2rem;
   color: var(--neon-pink);
-  margin-right: 1rem;
-  width: 44px;
-}
-.contact-item a {
-  color: var(--neon-yellow) !important;
-  text-decoration: none;
-}
-.contact-item a:hover {
-  color: var(--neon-pink) !important;
+  font-size: 1.5rem;
+  margin-right: 12px;
+  vertical-align: middle;
 }
 
-/* 8. Footer */
+/* Footer */
 .footer {
   background: #18192a;
   color: var(--neon-blue);
+  padding: 18px 0;
   text-align: center;
-  padding: 1.8rem 0;
+  font-size: 1.05rem;
   letter-spacing: 2px;
   border-top: 2px solid var(--neon-pink);
   box-shadow: 0 -2px 36px var(--neon-pink);
-  font-size: 1.08rem;
 }
 
-/* 9. 動畫進場效果 */
+/* 動畫效果 */
 .fade-in {
   opacity: 0;
   transform: translateY(36px) scale(0.97);
@@ -321,77 +221,23 @@ body {
   transform: none;
 }
 
-/* 10. 賽博碎片粒子特效 */
-.cyber-particles {
-  position: fixed;
-  pointer-events: none;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: 1;
-}
-.cyber-particle {
-  position: absolute;
-  border-radius: 40%;
-  filter: blur(0.4px);
-  opacity: 0.38;
-  animation: particle-float 16s linear infinite;
-}
-@keyframes particle-float {
-  0% {transform: translateY(0) scale(0.92);}
-  80% {transform: translateY(-30vh) scale(1.1);}
-  100% {transform: translateY(4vh) scale(0.98);}
-}
-
-/* 11. 賽博背景動線條 */
-body::before {
-  content: "";
-  position: fixed;
-  left: -70px; top: 13vh;
-  width: 6px; height: 86vh;
-  background: linear-gradient(180deg, var(--neon-pink) 0%, var(--neon-blue) 85%);
-  filter: blur(1.1px);
-  opacity: 0.16;
-  z-index: 0;
-  animation: lightbar 6.1s linear infinite alternate;
-}
-@keyframes lightbar {
-  0% { opacity: 0.11; left: -60px;}
-  100% { opacity: 0.25; left: 98vw;}
-}
-
-/* 12. Neon滾動條 */
+/* 滾動條自訂賽博風 */
 ::-webkit-scrollbar {
-  width: 11px;
-  background: #18192a;
+  width: 12px;
+  background: #14172b;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--neon-blue);
-  border-radius: 8px;
-  box-shadow: 0 0 14px var(--neon-pink);
+  border-radius: 7px;
+  box-shadow: 0 0 18px var(--neon-pink);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neon-pink);
 }
 
-/* 13. 響應式設計 */
-@media (max-width: 992px) {
-  .hero h1 { font-size: 2rem;}
-  .profile-img { width: 120px; height: 120px;}
-  .project-grid { grid-template-columns: 1fr 1fr; }
-}
+/* 小螢幕調整 */
 @media (max-width: 768px) {
-  .hero h1, #name { font-size: 1.2rem;}
-  .profile-img { width: 80px; height: 80px;}
+  .hero-content h1 { font-size: 2.1rem;}
+  .profile-img { width: 140px; height: 140px;}
   .project-grid { grid-template-columns: 1fr; }
-  .section-title { font-size: 1.15rem; }
-  .filter-btn { padding: 8px 16px; font-size: 0.88rem;}
-  .project-card { padding: 1.0rem; }
-  .contact-info { padding: 1.0rem;}
-}
-@media (max-width: 576px) {
-  .section { padding: 38px 0;}
-  .project-card { padding: 0.7rem;}
-  .contact-info { padding: 0.6rem;}
-  .contact-item { flex-direction: column; text-align: center;}
-  .contact-item i { margin-right: 0; margin-bottom: 0.5rem;}
 }
