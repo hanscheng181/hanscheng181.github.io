@@ -1,214 +1,231 @@
-/* style2.css - Cyberpunk Pink + Neon 融合主題 */
-
-/* 字型 */
 @import url('https://fonts.googleapis.com/css?family=Orbitron:wght@700;900&display=swap');
 
+/* 1. 賽博霓虹色+未來感基底 */
 :root {
-  /* Neon + 粉紅 主題色 */
-  --primary-pink: #ff6b9d;
-  --secondary-pink: #ffd3e0;
-  --light-pink: #fff0f5;
-  --deep-pink: #e91e63;
-  --gradient-pink: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c0 100%);
-  --neon-pink: #ff4aff;
-  --neon-blue: #00ffe7;
+  --neon-pink: #fe40e8;
+  --neon-blue: #23e8ff;
+  --neon-violet: #7f60ff;
   --neon-yellow: #fff500;
-  --neon-green: #29ff77;
-  --background: #141826;
-  --panel: #1a1e2a;
-  --card-glow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-pink);
-  --btn-glow: 0 0 12px var(--neon-blue), 0 0 22px var(--neon-pink);
-  --text-shadow: 0 0 8px var(--neon-pink), 0 0 2px var(--neon-yellow);
-  --border-gradient: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-yellow), var(--neon-blue));
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --neon-cyan: #2cfff6;
+  --cyber-bg: #151628;
+  --cyber-panel: #1f223b;
+  --cyber-card: #241637;
+  --glow-pink: 0 0 18px #fe40e880, 0 0 48px #23e8ff70;
+  --glow-blue: 0 0 14px #23e8ffb0, 0 0 44px #7f60ff80;
+  --glow-mix: 0 0 22px #fe40e8cc, 0 0 44px #23e8ffbb, 0 0 12px #fff50077;
+  --cyber-gradient: linear-gradient(120deg, #fe40e8 0%, #7f60ff 42%, #23e8ff 73%, #fff500 100%);
+  --text-glow: 0 0 16px #fff50099, 0 0 10px #fe40e8, 0 0 2px #23e8ff;
 }
 
 body {
-  font-family: 'Orbitron', 'Microsoft JhengHei', 'Noto Sans TC', Arial, sans-serif;
-  background: var(--background);
-  color: #f6eefe;
-  line-height: 1.6;
-  letter-spacing: 1px;
+  font-family: 'Orbitron', 'Noto Sans TC', Arial, '微軟正黑體', sans-serif;
+  background: radial-gradient(ellipse at 65% 20%, #321a4d 0%, #151628 100%);
+  color: #e7e0fa;
+  letter-spacing: 1.1px;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Navigation */
+/* 2. 未來感導航＋LOGO霓虹 */
 .navbar {
-  background: rgba(20,18,45,0.96)!important;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 24px var(--neon-pink), 0 2px 20px rgba(255, 107, 157, 0.15);
-  border-bottom: 2px solid var(--neon-blue);
+  background: rgba(20,18,45,0.94)!important;
+  box-shadow: 0 2px 34px #fe40e8a1, 0 2px 26px #23e8ff51;
+  border-bottom: 2.5px solid var(--neon-blue);
   transition: background 0.3s, box-shadow 0.4s;
 }
-
-.navbar-brand, .nav-link {
+.navbar-brand {
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--neon-pink)!important;
+  letter-spacing: 3px;
+  text-shadow: var(--text-glow), 0 0 28px var(--neon-blue);
+  display: flex;
+  align-items: center;
+}
+.cyber-logo {
+  width: 40px; height: 40px;
+  margin-right: 15px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 12px var(--neon-blue));
+  animation: neon-glow 2s infinite alternate;
+}
+.nav-link {
   color: var(--neon-blue)!important;
   font-weight: bold;
-  font-size: 1.25rem;
-  text-shadow: var(--text-shadow);
-  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1.08rem;
+  text-shadow: var(--text-glow);
   letter-spacing: 2px;
-  transition: color 0.25s;
+  transition: color 0.22s;
 }
-.navbar-brand:hover, .nav-link:hover {
+.nav-link:hover {
   color: var(--neon-pink)!important;
   text-shadow: 0 0 18px var(--neon-yellow);
 }
-
 .navbar-toggler {
   border-color: var(--neon-blue);
 }
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 32 32' fill='%2300ffe7' xmlns='http://www.w3.org/2000/svg'%3e%3crect y='6' width='32' height='4' rx='2'/%3e%3crect y='14' width='32' height='4' rx='2'/%3e%3crect y='22' width='32' height='4' rx='2'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 32 32' fill='%2323e8ff' xmlns='http://www.w3.org/2000/svg'%3e%3crect y='6' width='32' height='4' rx='2'/%3e%3crect y='14' width='32' height='4' rx='2'/%3e%3crect y='22' width='32' height='4' rx='2'/%3e%3c/svg%3e");
 }
 
-/* Hero Section */
+/* 3. Hero＋跑馬燈 */
 .hero {
-  background: radial-gradient(circle at 40% 50%, #1a1942 60%, #18192a 100%), var(--gradient-pink);
+  background: linear-gradient(110deg, #281f4a 0%, #151628 80%);
   min-height: 80vh;
   display: flex;
   align-items: center;
-  color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 70px var(--neon-blue) inset, 0 0 120px var(--neon-pink) inset;
+  box-shadow: 0 0 80px var(--neon-blue) inset, 0 0 140px var(--neon-pink) inset;
 }
-
-.hero::before {
-  content: '';
+.cyber-marquee {
   position: absolute;
-  top: -120px;
-  left: -80px;
-  right: 0;
-  bottom: -120px;
-  background: repeating-linear-gradient(135deg, rgba(0,255,231,0.07) 0 2px, transparent 2px 26px), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="300" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="600" cy="700" r="120" fill="rgba(255,255,255,0.08)"/></svg>');
-  z-index: 1;
-  opacity: 0.5;
-  animation: float-bg 18s linear infinite alternate;
-  pointer-events: none;
+  top: 0; left: 0; width: 100%;
+  height: 42px;
+  background: linear-gradient(90deg, #fe40e8 15%, #23e8ff 85%);
+  color: #fff500;
+  font-family: 'Orbitron', Arial, sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px #fff, 0 0 12px #23e8ff;
+  font-size: 1.12rem;
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 0 18px #23e8ff, 0 0 14px #fe40e8;
+}
+.cyber-marquee span {
+  display: inline-block;
+  padding-left: 100vw;
+  white-space: nowrap;
+  animation: marquee-move 16s linear infinite;
+}
+@keyframes marquee-move {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-120vw);}
 }
 
-@keyframes float-bg {
-  0% { transform: translateY(0) scale(1);}
-  100% { transform: translateY(-30px) scale(1.04);}
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1, #name {
-  font-size: 3.5rem;
+.hero-content h1, #name {
+  font-size: 3.3rem;
   font-family: 'Orbitron', Arial, sans-serif;
   font-weight: 900;
-  margin-bottom: 1rem;
   color: var(--neon-pink);
-  letter-spacing: 4px;
-  text-shadow: var(--text-shadow);
-  animation: neon-glow 2.2s alternate infinite;
+  letter-spacing: 5px;
+  text-shadow: var(--text-glow), 0 0 44px var(--neon-blue);
+  animation: neon-glow 2.5s alternate infinite;
 }
 @keyframes neon-glow {
-  to { text-shadow: 0 0 22px var(--neon-pink), 0 0 80px var(--neon-yellow);}
+  to { text-shadow: 0 0 34px var(--neon-pink), 0 0 80px var(--neon-yellow);}
 }
-
-.hero .subtitle, #title {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
+.subtitle, #title {
+  font-size: 1.26rem;
   color: var(--neon-blue);
-  font-weight: 600;
+  font-weight: 700;
   text-shadow: 0 0 10px var(--neon-blue);
-  opacity: 0.95;
+  opacity: 0.98;
+  margin-bottom: 1.5rem;
 }
 
+/* 4. 霓虹大頭貼 */
 .profile-img {
-  width: 240px;
-  height: 240px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
-  border: 4px solid var(--neon-blue);
-  box-shadow: 0 0 32px var(--neon-pink), 0 0 44px var(--neon-blue), 0 2px 22px var(--primary-pink);
+  border: 4.5px solid var(--neon-blue);
+  box-shadow: 0 0 32px var(--neon-pink), 0 0 44px var(--neon-blue), 0 2px 22px #fff;
   object-fit: cover;
   margin-top: 20px;
-  animation: flicker 2.5s infinite alternate;
-  background: rgba(255,255,255,0.04);
+  animation: flicker 2.2s infinite alternate;
 }
 @keyframes flicker {
-  0% { filter: brightness(0.93);}
-  65% { filter: brightness(1);}
-  100% { filter: brightness(1.08);}
+  0% { filter: brightness(0.92);}
+  55% { filter: brightness(1);}
+  100% { filter: brightness(1.13);}
 }
 
-/* Sections */
+/* 5. Section/標題/卡片 */
 .section, .bg-light {
-  background: var(--panel);
-  box-shadow: 0 0 40px var(--neon-pink) inset;
-  padding: 68px 0 44px 0;
+  background: var(--cyber-panel);
+  box-shadow: 0 0 42px var(--neon-pink) inset;
+  padding: 64px 0 36px 0;
   border-radius: 24px;
-  margin-bottom: 38px;
+  margin-bottom: 32px;
 }
 .bg-light {
-  background: rgba(35, 38, 58, 0.96) !important;
+  background: rgba(35, 38, 58, 0.97) !important;
 }
-
-/* 標題 */
 .section-title {
   color: var(--neon-yellow);
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-family: 'Orbitron', Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 3px;
   margin-bottom: 36px;
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--text-glow);
+  animation: neon-pulse 1.8s infinite alternate;
+}
+@keyframes neon-pulse {
+  0% {text-shadow: 0 0 14px var(--neon-blue);}
+  100% {text-shadow: 0 0 36px var(--neon-pink);}
 }
 
-/* 卡片 */
 .card {
-  background: rgba(28, 32, 56, 0.97);
-  border: 2px solid transparent;
-  border-radius: 20px;
-  box-shadow: var(--card-glow);
+  background: var(--cyber-card);
+  border: 2.5px solid transparent;
+  border-radius: 19px;
+  box-shadow: var(--glow-mix);
   overflow: hidden;
   margin-bottom: 2rem;
-  transition: box-shadow 0.35s, border-color 0.2s;
+  transition: box-shadow 0.32s, border-color 0.18s;
+  position: relative;
 }
 .card:hover {
-  border-image: var(--border-gradient) 1;
-  box-shadow: 0 0 52px var(--neon-yellow), var(--card-glow);
+  border-image: var(--cyber-gradient) 1;
+  box-shadow: 0 0 65px var(--neon-yellow), var(--glow-mix);
+}
+.card:before {
+  content: '';
+  position: absolute; top:0; left:0; width: 100%; height: 6px;
+  background: var(--cyber-gradient);
+  filter: blur(0.7px); opacity:0.32;
+  z-index:2;
 }
 
-/* 按鈕（濾鏡、互動） */
-.filter-buttons {
-  text-align: center;
-  margin-bottom: 3rem;
-}
+.filter-buttons { text-align: center; margin-bottom: 2.5rem; }
 .filter-btn, .btn {
-  background: none;
+  background: linear-gradient(90deg, #241637 0%, #321a4d 100%);
   color: var(--neon-blue);
-  border: 2px solid var(--neon-pink);
-  box-shadow: var(--btn-glow);
+  border: 2.5px solid var(--neon-pink);
+  box-shadow: var(--glow-pink);
   font-weight: bold;
   font-size: 1.1rem;
   border-radius: 14px;
   padding: 10px 30px;
-  margin: 6px 12px 20px 0;
-  transition: background 0.22s, color 0.22s, border-color 0.22s;
+  margin: 6px 12px 18px 0;
   position: relative;
   overflow: hidden;
+  transition: background 0.18s, color 0.18s, border-color 0.19s;
 }
 .filter-btn.active, .btn:hover {
-  background: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-blue) 100%);
-  color: #121b2a;
+  background: var(--cyber-gradient);
+  color: #18192a;
   border-color: var(--neon-yellow);
-  box-shadow: 0 0 34px var(--neon-yellow), var(--btn-glow);
+  box-shadow: 0 0 28px var(--neon-yellow), var(--btn-glow);
+}
+.filter-btn::after, .btn::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent 60%, var(--neon-yellow) 100%);
+  opacity: 0.12;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
 }
 
-/* Projects Grid & Card */
+/* 6. 卡片Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -216,48 +233,42 @@ body {
   margin-top: 28px;
 }
 .project-card {
-  background: rgba(18,24,34,0.98);
+  background: var(--cyber-card);
   border: 2.5px solid var(--neon-blue);
   border-radius: 18px;
-  box-shadow: 0 0 24px var(--neon-blue), 0 0 32px var(--neon-pink);
+  box-shadow: var(--glow-blue);
   padding: 36px 24px 22px 24px;
   cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.18s, transform 0.18s;
+  transition: border-color 0.3s, box-shadow 0.16s, transform 0.16s;
   position: relative;
   overflow: hidden;
 }
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 4px;
-  background: var(--border-gradient);
-  filter: blur(0.5px);
-}
 .project-card:hover {
   border-color: var(--neon-yellow);
-  box-shadow: 0 0 44px var(--neon-yellow), 0 0 18px var(--neon-pink);
-  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 44px var(--neon-yellow), 0 0 22px var(--neon-pink);
+  transform: translateY(-6px) scale(1.025);
 }
 .project-number {
   font-size: 2.0rem;
   color: var(--neon-pink);
   font-family: 'Orbitron', Arial, sans-serif;
   position: absolute;
-  top: 20px;
-  right: 26px;
-  text-shadow: 0 0 10px var(--neon-yellow);
-  background: rgba(0,0,0,0.11);
-  border-radius: 60%;
-  padding: 8px 16px;
+  top: 18px;
+  right: 22px;
+  text-shadow: 0 0 12px var(--neon-yellow), 0 0 32px var(--neon-pink);
+  animation: projectnum-glow 1.3s alternate infinite;
+}
+@keyframes projectnum-glow {
+  from { text-shadow: 0 0 4px var(--neon-blue);}
+  to { text-shadow: 0 0 14px var(--neon-pink), 0 0 34px var(--neon-yellow);}
 }
 
-/* 關於我/聯絡我 Contact Info */
+/* 7. 聯絡區塊 */
 .contact-info {
-  background: rgba(28, 32, 56, 0.9);
-  padding: 3rem;
+  background: rgba(24, 26, 44, 0.98);
+  padding: 2.3rem;
   border-radius: 18px;
-  box-shadow: 0 10px 36px var(--neon-blue), 0 10px 36px rgba(255, 107, 157, 0.15);
+  box-shadow: 0 8px 36px var(--neon-blue), 0 10px 36px rgba(255, 107, 157, 0.15);
 }
 .contact-item {
   display: flex;
@@ -267,7 +278,7 @@ body {
   background: rgba(36,36,70,0.65);
   border-radius: 12px;
   color: var(--neon-green);
-  transition: transform 0.3s;
+  transition: transform 0.23s;
 }
 .contact-item:hover {
   transform: translateX(8px) scale(1.01);
@@ -287,7 +298,7 @@ body {
   color: var(--neon-pink) !important;
 }
 
-/* Footer */
+/* 8. Footer */
 .footer {
   background: #18192a;
   color: var(--neon-blue);
@@ -295,11 +306,11 @@ body {
   padding: 1.8rem 0;
   letter-spacing: 2px;
   border-top: 2px solid var(--neon-pink);
-  box-shadow: 0 -2px 32px var(--neon-pink);
+  box-shadow: 0 -2px 36px var(--neon-pink);
   font-size: 1.08rem;
 }
 
-/* 動畫進場效果 */
+/* 9. 動畫進場效果 */
 .fade-in {
   opacity: 0;
   transform: translateY(36px) scale(0.97);
@@ -310,81 +321,77 @@ body {
   transform: none;
 }
 
-/* 滾動條自訂賽博風 */
+/* 10. 賽博碎片粒子特效 */
+.cyber-particles {
+  position: fixed;
+  pointer-events: none;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 1;
+}
+.cyber-particle {
+  position: absolute;
+  border-radius: 40%;
+  filter: blur(0.4px);
+  opacity: 0.38;
+  animation: particle-float 16s linear infinite;
+}
+@keyframes particle-float {
+  0% {transform: translateY(0) scale(0.92);}
+  80% {transform: translateY(-30vh) scale(1.1);}
+  100% {transform: translateY(4vh) scale(0.98);}
+}
+
+/* 11. 賽博背景動線條 */
+body::before {
+  content: "";
+  position: fixed;
+  left: -70px; top: 13vh;
+  width: 6px; height: 86vh;
+  background: linear-gradient(180deg, var(--neon-pink) 0%, var(--neon-blue) 85%);
+  filter: blur(1.1px);
+  opacity: 0.16;
+  z-index: 0;
+  animation: lightbar 6.1s linear infinite alternate;
+}
+@keyframes lightbar {
+  0% { opacity: 0.11; left: -60px;}
+  100% { opacity: 0.25; left: 98vw;}
+}
+
+/* 12. Neon滾動條 */
 ::-webkit-scrollbar {
   width: 11px;
-  background: #14172b;
+  background: #18192a;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--neon-blue);
-  border-radius: 7px;
-  box-shadow: 0 0 18px var(--neon-pink);
+  border-radius: 8px;
+  box-shadow: 0 0 14px var(--neon-pink);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neon-pink);
 }
 
-/* 響應式設計 */
+/* 13. 響應式設計 */
 @media (max-width: 992px) {
-  .hero h1 { font-size: 2.2rem;}
-  .profile-img { width: 150px; height: 150px;}
+  .hero h1 { font-size: 2rem;}
+  .profile-img { width: 120px; height: 120px;}
   .project-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  .hero h1, #name { font-size: 1.8rem;}
-  .profile-img { width: 115px; height: 115px;}
+  .hero h1, #name { font-size: 1.2rem;}
+  .profile-img { width: 80px; height: 80px;}
   .project-grid { grid-template-columns: 1fr; }
-  .section-title { font-size: 1.5rem; }
-  .filter-btn { padding: 8px 18px; font-size: 0.95rem;}
-  .project-card { padding: 1.2rem; }
-  .contact-info { padding: 1.2rem;}
+  .section-title { font-size: 1.15rem; }
+  .filter-btn { padding: 8px 16px; font-size: 0.88rem;}
+  .project-card { padding: 1.0rem; }
+  .contact-info { padding: 1.0rem;}
 }
 @media (max-width: 576px) {
-  .hero h1, #name { font-size: 1.2rem;}
-  .hero .subtitle, #title { font-size: 1.0rem;}
-  .section { padding: 40px 0;}
-  .profile-img { width: 80px; height: 80px;}
-  .project-card { padding: 0.8rem;}
+  .section { padding: 38px 0;}
+  .project-card { padding: 0.7rem;}
   .contact-info { padding: 0.6rem;}
   .contact-item { flex-direction: column; text-align: center;}
   .contact-item i { margin-right: 0; margin-bottom: 0.5rem;}
-}
-
-/* 額外 Neon 流光動態按鈕特效（可選，未來可加 JS 控制） */
-.filter-btn::after, .btn::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(120deg, transparent 60%, var(--neon-yellow) 100%);
-  opacity: 0.06;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  z-index: 1;
-}
-
-/* 賽博動態線條閃爍（裝飾） */
-body::before {
-  content: "";
-  position: fixed;
-  left: -70px; top: 12vh;
-  width: 6px; height: 88vh;
-  background: linear-gradient(180deg, var(--neon-pink) 0%, var(--neon-blue) 85%);
-  filter: blur(1.2px);
-  opacity: 0.18;
-  z-index: 0;
-  animation: lightbar 5.4s linear infinite alternate;
-}
-@keyframes lightbar {
-  0% { opacity: 0.10; left: -60px;}
-  100% { opacity: 0.27; left: 98vw;}
-}
-
-/* 小細節: Neon 序號閃爍 */
-.project-number {
-  animation: projectnum-glow 1.5s alternate infinite;
-}
-@keyframes projectnum-glow {
-  from { text-shadow: 0 0 4px var(--neon-blue);}
-  to { text-shadow: 0 0 16px var(--neon-pink), 0 0 40px var(--neon-yellow);}
 }
