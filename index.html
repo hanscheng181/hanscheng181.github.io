@@ -1,306 +1,202 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My 2025 AI Personal Website</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style2.css">
-    <link rel="icon" type="image/x-icon" href="/pic/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>賽博龐克 AI 個人網頁</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="icon" type="image/x-icon" href="/pic/favicon.ico">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home">2025 AI</a>
+  <!-- 賽博碎片粒子特效 -->
+  <div class="cyber-particles"></div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <!-- LOGO SVG -->
+        <img class="cyber-logo" src="data:image/svg+xml;utf8,<svg width='38' height='38' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><circle cx='32' cy='32' r='30' fill='none' stroke='%23fe40e8' stroke-width='4'/><circle cx='32' cy='32' r='16' fill='none' stroke='%2323e8ff' stroke-width='3'/><text x='32' y='38' font-family='Orbitron' font-size='16' fill='%23fff500' text-anchor='middle'>AI</text></svg>" alt="Cyber Logo">
+        賽博AI
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">關於我</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">我的專案</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">聯絡我</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">關於我</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">我的專案</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">聯絡我</a>
-                    </li>
-                </ul>
-            </div>
+  <!-- HERO + 跑馬燈 -->
+  <section id="home" class="hero">
+    <div class="cyber-marquee"><span>🎉 恭喜 112EMBA哈佛個案組優等獎 &amp; 服務創新組冠軍 | 本網頁採賽博龐克設計，支援AI專案展示！ | 🚀 歡迎加入AI新未來！</span></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content fade-in">
+          <h1 id="name"></h1>
+          <p class="subtitle" id="title"></p>
+          <div class="mb-3">
+            <strong>專業領域：</strong>
+            <span id="expertise"></span>
+          </div>
+          <div class="mb-3">
+            <strong>學歷：</strong>
+            <span id="education"></span>
+          </div>
+          <div class="mb-4">
+            <strong>聯絡信箱：</strong>
+            <a href="mailto:" class="text-white" id="email"></a>
+          </div>
         </div>
-    </nav>
+        <div class="col-lg-6 text-center fade-in">
+          <img src="pic/mypic.jpg" alt="個人照片" class="profile-img">
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content fade-in">
-                    <h1 id="name"></h1>
-                    <p class="subtitle" id="title"></p>
-                    <div class="mb-3">
-                        <strong>專業領域：</strong>
-                        <span id="expertise"></span>
-                    </div>
-                    <div class="mb-3">
-                        <strong>學歷：</strong>
-                        <span id="education"></span>
-                    </div>
-                    <div class="mb-4">
-                        <strong>聯絡信箱：</strong>
-                        <a href="mailto:" class="text-white" id="email"></a>
-                    </div>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">關於我</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card fade-in">
+            <div class="card-body p-4">
+              <p class="lead text-center" id="about-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">我的專案</h2>
+      <!-- Filter Buttons -->
+      <div class="filter-buttons fade-in">
+        <button class="btn filter-btn active" onclick="filterProjects('all')">全部</button>
+        <button class="btn filter-btn" onclick="filterProjects('cognitive')">感知型AI</button>
+        <button class="btn filter-btn" onclick="filterProjects('generative')">生成型AI</button>
+        <button class="btn filter-btn" onclick="filterProjects('agentic')">Agentic AI</button>
+        <button class="btn filter-btn" onclick="filterProjects('tools')">其他工具</button>
+      </div>
+      <!-- Projects Grid -->
+      <div class="project-grid fade-in" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">聯絡我</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-info fade-in">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <div>
+                    <strong>電子郵件</strong><br>
+                    <a href="mailto:" class="text-white" id="contact-email1"></a><br>
+                  </div>
                 </div>
-                <div class="col-lg-6 text-center fade-in">
-                    <img src="pic/mypic.jpg" alt="Dr. Pin Luarn" class="profile-img">
+              </div>
+              <div class="col-md-6">
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <div>
+                    <strong>電話</strong><br>
+                    <span id="contact-phone"></span>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">關於我</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card fade-in">
-                        <div class="card-body p-4">
-                            <p class="lead text-center" id="about-text">
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>位置</strong><br>
+                <span id="contact-location"></span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">我的專案</h2>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Dr. Pin Luarn. 版權所有。</p>
+    </div>
+  </footer>
 
-            <!-- Filter Buttons -->
-            <div class="filter-buttons fade-in">
-                <button class="btn filter-btn active" onclick="filterProjects('all')">全部</button>
-                <button class="btn filter-btn" onclick="filterProjects('cognitive')">感知型AI</button>
-                <button class="btn filter-btn" onclick="filterProjects('generative')">生成型AI</button>
-                <button class="btn filter-btn" onclick="filterProjects('agentic')">Agentic AI</button>
-                <button class="btn filter-btn" onclick="filterProjects('tools')">其他工具</button>
-            </div>
+  <!-- 網站瀏覽人數統計 -->
+  <div style="position:fixed;bottom:16px;right:16px;background:rgba(24,26,44,0.88);color:#fff;padding:7px 18px 7px 16px;border-radius:18px;font-family:'Orbitron';box-shadow:0 0 12px #fe40e8,0 0 6px #23e8ff;font-size:1.02rem;z-index:99;">
+    <span id="viewCounter"></span>
+  </div>
 
-            <!-- Projects Grid -->
-            <div class="project-grid fade-in" id="projects-grid">
-                <!-- Projects will be dynamically generated -->
-            </div>
-        </div>
-    </section>
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">聯絡我</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-info fade-in">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <strong>電子郵件</strong><br>
-                                        <a href="mailto:" class="text-white" id="contact-email1"></a><br>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="contact-item">
-                                    <i class="fas fa-phone"></i>
-                                    <div>
-                                        <strong>電話</strong><br>
-                                        <span id="contact-phone"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>位置</strong><br>
-                                <span id="contact-location"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- 個人資料與專案設定同你的原本腳本... -->
+  <script>
+    // ====== 使用者資料區域 - 請修改以下內容 ======
+    const profileData = {
+      name: "鄭士漢 Han$",
+      title: "112年度EMBA論文競賽 哈佛個案組 優等獎得主! | 第一屆永豐盃全國EMBA個案交流賽 服務創新組 冠軍得主",
+      expertise: "市場行銷、數據分析、AI應用",
+      education: "國立臺灣科技大學企業管理碩士",
+      email: "m11208914@mail.ntust.edu.tw",
+      about: "士漢在長庚大學取得電機工程碩士學位，12年後在臺灣科技大學獲得企業管理碩士學位。2025年，獲頒EMBA論文競賽哈佛個案組優等獎，同年6月取得全國EMBA個案交流賽-服務創新組冠軍。",
+      contactEmail: "m11208914@mail.ntust.edu.tw",
+      phone: "+886(2)2657-2199",
+      location: "電腦教室: MA-519<br>國立臺灣科技大學"
+    };
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Dr. Pin Luarn. 版權所有。</p>
-        </div>
-    </footer>
+    // ...專案資料與原有JS, 不重複貼...
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    // 網站訪問計數
+    let cnt = Number(localStorage.getItem('visits')||'0')+1;
+    localStorage.setItem('visits',cnt);
+    document.getElementById('viewCounter').innerHTML = '👁️ 網頁造訪次數：' + cnt;
+  </script>
 
-    <script>
-        // ====== 使用者資料區域 - 請修改以下內容 ======
-        const profileData = {
-            name: "鄭士漢 Han$",
-            title: "112年度EMBA論文競賽 哈佛個案組 優等獎得主! | 第一屆永豐盃全國EMBA個案交流賽 服務創新組 冠軍得主",
-            expertise: "市場行銷、數據分析、AI應用",
-            education: "國立臺灣科技大學企業管理碩士",
-            email: "m11208914@mail.ntust.edu.tw",
-            about: "士漢在長庚大學取得電機工程碩士學位，12年後在臺灣科技大學獲得企業管理碩士學位。2025年，獲頒EMBA論文競賽哈佛個案組優等獎，同年6月取得全國EMBA個案交流賽-服務創新組冠軍。",
-            contactEmail: "m11208914@mail.ntust.edu.tw",
-            phone: "+886(2)2657-2199",
-            location: "電腦教室: MA-519<br>國立臺灣科技大學"
-        };
-        // ====== 使用者資料區域結束 ======
-
-        // Project data
-         const projects = [
-            {id: 1, category: 'tools', title: 'Unit #1', description: '網頁, MediaPipe, 環境 - 其他工具專案、感知型AI'},
-            {id: 2, category: 'tools', title: 'Unit #2', description: 'CV2 - 其他工具專案'},
-            {id: 3, category: 'cognitive', title: 'Unit #3', description: 'Object Detection - 感知型AI'},
-            {id: 4, category: 'cognitive', title: 'Unit #4', description: 'Image Segmentation - 感知型AI'},
-            {id: 5, category: 'cognitive', title: 'Unit #5', description: 'Face Detection - 感知型AI'},
-            {id: 6, category: 'cognitive', title: 'Unit #6', description: 'Face Landmark Detection - 感知型AI'},
-            {id: 7, category: 'cognitive', title: 'Unit #7', description: 'Pose Landmark Detection - 感知型AI'},
-            {id: 8, category: 'cognitive', title: 'Unit #8', description: 'Hand Landmarks - 感知型AI'},
-            {id: 9, category: 'cognitive', title: 'Unit #9', description: 'Gesture recognition - 感知型AI'},
-            {id: 10, category: 'tools', title: 'Unit #10', description: 'Streamlit - 其他工具專案'},
-            {id: 11, category: 'generative', title: 'Unit #11', description: 'Local LLM - 生成型AI'},
-            {id: 12, category: 'generative', title: 'Unit #12', description: 'Neural Style Transfer - 生成型AI'},
-            {id: 13, category: 'generative', title: 'Unit #13', description: 'Torch - 生成型AI'},
-            {id: 14, category: 'generative', title: 'Unit #14', description: 'Arbitrary-image Real time NST - 生成型AI'},
-            {id: 15, category: 'cognitive', title: 'Unit #15', description: 'YOLO - 感知型AI'},
-            {id: 16, category: 'generative', title: 'Unit #16', description: 'Using Python call LLM API - 生成型AI'},
-            {id: 17, category: 'generative', title: 'Unit #17', description: '從頭打造 LLM - 生成型AI'},
-            {id: 18, category: 'generative', title: 'Unit #18', description: 'RAG 簡介、LangChain - 生成型AI'},
-            {id: 19, category: 'agentic', title: 'Unit #19', description: 'AI Agent, MCP, n8n - 代理型AI'},
-            {id: 20, category: 'agentic', title: 'Unit #20', description: '進階 n8n - 代理型AI'}
-        ];
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProfileData();
-            renderProjects('all');
-            initScrollAnimations();
-            initSmoothScrolling();
-        });
-
-        // Load profile data
-        function loadProfileData() {
-            // Update home section
-            document.getElementById('name').textContent = profileData.name;
-            document.getElementById('title').textContent = profileData.title;
-            document.getElementById('expertise').textContent = profileData.expertise;
-            document.getElementById('education').textContent = profileData.education;
-            document.getElementById('email').textContent = profileData.email;
-            document.getElementById('email').href = `mailto:${profileData.email}`;
-
-            // Update about section
-            document.getElementById('about-text').textContent = profileData.about;
-
-            // Update contact section
-            const contactEmail = profileData.contactEmail || profileData.email;
-            document.getElementById('contact-email1').textContent = contactEmail;
-            document.getElementById('contact-email1').href = `mailto:${contactEmail}`;
-            document.getElementById('contact-phone').textContent = profileData.phone;
-            document.getElementById('contact-location').innerHTML = profileData.location;
+  <!-- 賽博碎片流光粒子 -->
+  <script>
+    (function(){
+      let n = 16; // 粒子數
+      let $c = document.querySelector('.cyber-particles');
+      if($c){
+        for(let i=0;i<n;i++){
+          let d = document.createElement('div');
+          d.className = 'cyber-particle';
+          let size = Math.random()*22+12;
+          d.style.width = d.style.height = size+'px';
+          d.style.left = Math.random()*98+'vw';
+          d.style.top = Math.random()*88+'vh';
+          let c = ['#fe40e8','#23e8ff','#fff500','#7f60ff','#2cfff6'][Math.floor(Math.random()*5)];
+          d.style.background = c;
+          d.style.opacity = 0.13 + Math.random()*0.18;
+          d.style.filter = 'blur('+(Math.random()*2+0.3)+'px)';
+          d.style.animationDelay = (Math.random()*12)+'s';
+          $c.appendChild(d);
         }
+      }
+    })();
+  </script>
 
-        // Filter and render projects
-        function filterProjects(category) {
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            renderProjects(category);
-        }
-
-        function renderProjects(category) {
-            const grid = document.getElementById('projects-grid');
-            const filteredProjects = category === 'all' ? projects : projects.filter(p => p.category === category);
-
-            grid.innerHTML = filteredProjects.map(project => {
-                return `
-                    <div class="project-card" data-category="${project.category}" onclick="openProject(${project.id})">
-                        <div class="project-number">${project.id}</div>
-                        <h5>${project.title}</h5>
-                        <p class="text-muted">${project.description}</p>
-                        <small class="text-primary">點擊查看詳情</small>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Open project details
-        function openProject(id) {
-            // Navigate to unit.html with unit ID as parameter
-            window.open(`unit.html?unit=${id}`, '_blank');
-        }
-
-        // Scroll animations
-        function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Smooth scrolling for navigation links
-        function initSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 70;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255,255,255,0.98)';
-            } else {
-                navbar.style.background = 'rgba(255,255,255,0.95)';
-            }
-        });
-    </script>
 </body>
 </html>
