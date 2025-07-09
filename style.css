@@ -219,17 +219,12 @@ body {
     border-color: var(--secondary-color);
 }
 
-/* ======================== 這裡是重點 ======================== */
 .gallery-item img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    background: #fff;
+    height: 250px;
+    object-fit: cover;
     transition: transform 0.3s ease;
-    border-radius: 18px;
 }
-/* ========================================================== */
 
 .gallery-item:hover img {
     transform: scale(1.05);
@@ -445,7 +440,7 @@ body {
     }
 
     .gallery-item img {
-        /* 可以選擇不設高度，預設就是自適應 */
+        height: 200px;
     }
 
     .info-card {
