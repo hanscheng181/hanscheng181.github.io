@@ -31,7 +31,7 @@
     }
     .hint {
       color: #ff00cc;
-      font-size: 1.6rem;
+      font-size: 2.1rem;
       text-shadow: 0 0 8px #fff, 0 0 18px #0ff;
       margin-bottom: 24px;
       letter-spacing: 1px;
@@ -61,7 +61,7 @@
     }
     .video-responsive {
       position: relative;
-      width: 44vw;           /* 兩個影片約各佔一半寬 */
+      width: 44vw;
       max-width: 900px;
       aspect-ratio: 16/9;
       border-radius: 24px;
@@ -87,7 +87,6 @@
         0 0 40px #ff00cc inset;
       transition: box-shadow 0.2s;
     }
-    /* 手機模式下（<=900px）兩個影片上下直排 */
     @media (max-width: 900px) {
       .video-row {
         flex-direction: column;
@@ -98,6 +97,34 @@
         width: 90vw;
         max-width: 98vw;
       }
+    }
+    /* 賽博龐克風格按鈕 */
+    .cyber-btn {
+      display: inline-block;
+      font-family: 'Orbitron', 'Arial', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      padding: 16px 42px;
+      margin: 32px 0 34px 0;
+      color: #fff;
+      background: linear-gradient(90deg, #0ff 0%, #ff00cc 100%);
+      border: none;
+      border-radius: 30px;
+      box-shadow:
+        0 0 12px #0ff,
+        0 0 40px #ff00cc,
+        0 0 80px #0ff;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.13s, box-shadow 0.16s, background 0.22s;
+      position: relative;
+    }
+    .cyber-btn:hover {
+      transform: scale(1.06) translateY(-2px);
+      background: linear-gradient(90deg, #ff00cc 0%, #0ff 100%);
+      box-shadow:
+        0 0 18px #0ff,
+        0 0 80px #ff00cc;
     }
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
   </style>
@@ -119,7 +146,7 @@
     <!-- 影片二 -->
     <div class="video-responsive">
       <iframe
-        src="https://www.youtube.com/embed/0n43NEIbziY" <!-- 範例，請換成你第二部影片的ID -->
+        src="https://www.youtube.com/embed/0n43NEIbziY"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
@@ -127,7 +154,9 @@
   </div>
   <div class="neon-bar"></div>
   <p style="color:#fff;font-size:15px;letter-spacing:1px;margin-bottom:40px;">
-    （影片將自動排列於最佳大小，桌機橫排、手機直排）
+    （冠軍不是奇蹟，撐住才有轉機）
   </p>
+  <!-- 返回Hans按鈕 -->
+  <a class="cyber-btn" href="https://hanscheng181.github.io/index.html#home">返回Hans</a>
 </body>
 </html>
